@@ -1,0 +1,38 @@
+EXPERIMENT 1.1: LeetCode 217. Contains Duplicate
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        return len(nums) != len(set(nums))
+
+
+
+METHOD : 2(SORTING)
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+
+        nums.sort()
+
+        for i in range(len(nums) - 1):
+            if nums[i] == nums[i + 1]:
+                return True
+
+        return False
+
+EXPERIMENT : 1.2 (PROBLEM-219: CONTAINS DUPLICATE II)
+
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+
+        index = {}
+
+        for i in range(len(nums)):
+
+            if nums[i] in index:
+
+                if i - index[nums[i]] <= k:
+                    return True
+
+            index[nums[i]] = i
+
+        return False
